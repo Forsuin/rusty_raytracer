@@ -24,8 +24,8 @@ impl Vec3 {
         Vec3 { x, y, z }
     }
 
-    pub fn dot(self, rhs: Vec3) -> f64 {
-        self.x * rhs.x + self.y * rhs.y + self.z * rhs.z
+    pub fn dot(lhs: Vec3, rhs: Vec3) -> f64 {
+        lhs.x * rhs.x + lhs.y * rhs.y + lhs.z * rhs.z
     }
 
     pub fn cross(self, rhs: Vec3) -> Vec3 {
@@ -37,7 +37,7 @@ impl Vec3 {
     }
 
     pub fn length_squared(self) -> f64 {
-        self.dot(self)
+        Vec3::dot(self, self)
     }
 
     pub fn length(self) -> f64 {
@@ -160,6 +160,6 @@ impl Div<f64> for Vec3 {
 
 impl DivAssign<f64> for Vec3 {
     fn div_assign(&mut self, rhs: f64) {
-        *self *= (1.0 / rhs)
+        *self *= 1.0 / rhs
     }
 }
